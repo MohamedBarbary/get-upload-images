@@ -1,43 +1,11 @@
-// //require dotenv here
-// const express = require("express");
-// const app = express();
-// const path = require("path");
-// const dotenv = require("dotenv");
-// dotenv.config();
-
-// const { storage } = require("./storage/storage");
-// const multer = require("multer");
-// const upload = multer({ storage });
-
-// require("ejs");
-// const port = 4009;
-
-// app.use(express.json());
-// app.use(express.urlencoded({ extended: true }));
-
-// app.set("view engine", "ejs");
-// app.set("views", path.join(__dirname, "./views"));
-
-// app.get("", (req, res) => {
-//   res.render("home");
-// });
-
-// // code goes here
-// app.post("/upload", upload.single("image"), (req, res) => {
-//   console.log(req.file);
-//   res.send("Done");
-// });
-
-// app.listen(port, () => {
-//   console.log(`Server is listening on port ${port}`);
-// });
-// Require dotenv here
 const cloudinary = require("cloudinary").v2;
 const express = require("express");
 const app = express();
 const path = require("path");
 const dotenv = require("dotenv");
+const cors = require("cors");
 dotenv.config();
+app.use(cors());
 
 const { storage } = require("./storage/storage");
 const multer = require("multer");
