@@ -18,7 +18,7 @@ const multer = require("multer");
 const upload = multer({ storage });
 
 require("ejs");
-const port = 4009;
+const port = 4005;
 
 // Middleware setup
 app.use(express.json());
@@ -53,6 +53,6 @@ app.get("/getImage/:filename", (req, res) => {
 });
 
 // Start the server
-app.listen(port,'0.0.0.0', () => {
+app.listen(port, () => {
   console.log(`Server is listening on port ${port}`);
 });
