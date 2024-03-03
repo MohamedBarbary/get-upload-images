@@ -5,7 +5,13 @@ const path = require("path");
 const dotenv = require("dotenv");
 const cors = require("cors");
 dotenv.config();
-app.use(cors());
+
+app.use(cors({
+  credentials: true,
+  origin: '*', // Replace with your allowed origin
+  methods: ['GET', 'POST', 'PATCH', 'DELETE'],
+  allowedHeaders: ['Content-Type','jwt'],
+}));;
 
 const { storage } = require("./storage/storage");
 const multer = require("multer");
