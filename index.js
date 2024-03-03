@@ -3,15 +3,10 @@ const express = require("express");
 const app = express();
 const path = require("path");
 const dotenv = require("dotenv");
-const cors = require("cors");
 dotenv.config();
-
-app.use(cors({
-  credentials: true,
-  origin: '*', // Replace with your allowed origin
-  methods: ['GET', 'POST', 'PATCH', 'DELETE'],
-  allowedHeaders: ['Content-Type','jwt'],
-}));;
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization')
 
 const { storage } = require("./storage/storage");
 const multer = require("multer");
