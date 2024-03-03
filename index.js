@@ -4,10 +4,14 @@ const app = express();
 const path = require("path");
 const dotenv = require("dotenv");
 dotenv.config();
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization')
+function setCORSHeaders(req, res, next) {
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
+  next(); // Call next to proceed to the next middleware in the chain
+}
 
+app.use(setCORSHeaders);
 const { storage } = require("./storage/storage");
 const multer = require("multer");
 const upload = multer({ storage });
@@ -48,6 +52,6 @@ app.get("/getImage/:filename", (req, res) => {
 });
 
 // Start the server
-app.listen(port,'0.0.0.0', () => {
+app.listen(port, "0.0.0.0", () => {
   console.log(`Server is listening on port ${port}`);
 });
